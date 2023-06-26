@@ -2,7 +2,6 @@ const userModel = require("../models/userModels");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-//register callback
 const registerController = async (req, res) => {
   try {
     const exisitingUser = await userModel.findOne({ email: req.body.email });
@@ -51,6 +50,7 @@ const loginController = async (req, res) => {
     res.status(500).send({ message: `Error in Login CTRL ${error.message}` });
   }
 };
+
 const authController = async (req, res) => {
   try {
     const user = await userModel.findById({ _id: req.body.userId });
